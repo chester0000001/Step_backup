@@ -92,6 +92,12 @@
     <Compile Include="formSessions.Designer.cs">
       <DependentUpon>formSessions.cs</DependentUpon>
     </Compile>
+    <Compile Include="formTickets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formTickets.designer.cs">
+      <DependentUpon>formTickets.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AgeRestriction.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="DataManager.cs" />
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formTickets.resx">
+      <DependentUpon>formTickets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

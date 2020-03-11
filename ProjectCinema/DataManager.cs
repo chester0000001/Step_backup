@@ -38,6 +38,15 @@ namespace ProjectCinema
 
         public void LoadData()
         {
+            categories.Clear();
+        ageRestrictions.Clear();
+            films.Clear();
+            halls.Clear();
+            sessions.Clear();
+            places.Clear();
+            tickets.Clear();
+            users.Clear();
+
             string queryCategories = "SELECT * FROM Category";
             string queryaAgeRestriction = "SELECT * FROM AgeRestriction";
             string queryFilm = "SELECT * FROM Films";
@@ -58,6 +67,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Category c = new Category(
+                    (int)reader["Id"],
                     reader["Name"].ToString()
                     );
                 categories.Add(c);
@@ -70,6 +80,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 AgeRestriction ar = new AgeRestriction(
+                    (int)reader["Id"],
                     (int)reader["Age"]
                     );
                 ageRestrictions.Add(ar);
@@ -82,6 +93,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Film f = new Film(
+                    (int)reader["Id"],
                     reader["Name"].ToString(),
                     (int)reader["CategoryId"],
                     (int)reader["AgeId"]
@@ -96,6 +108,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Hall h = new Hall(
+                    (int)reader["Id"],
                     reader["Name"].ToString()
                     );
                 halls.Add(h);
@@ -108,6 +121,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Session s = new Session(
+                    (int)reader["Id"],
                     (int)reader["HallId"],
                     (DateTime)reader["DateTime"],
                     (int)reader["FilmId"]
@@ -122,6 +136,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Place p = new Place(
+                    (int)reader["Id"],
                     (int)reader["HallId"],
                     (int)reader["Row"]
                     );
@@ -135,6 +150,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Ticket t = new Ticket(
+                    (int)reader["Id"],
                     (int)reader["PlaceId"],
                     (int)reader["SessionId"],
                     (DateTime)reader["DateTime"]
@@ -157,22 +173,37 @@ namespace ProjectCinema
                 users.Add(u);
             }
             connection.Close();
-
-        }
+         
+    }
         /// <summary>
         /// добавления фильма (Игорь)
         /// </summary>
-        public void AddFilm(Film f)
+        public void AddFilm(string Name, int CategoryId,int AgeId)
         {
             string query = "insert into Films (Name, CategoryId, AgeId) values (@Name, @CategoryId,@AgeId) ";
             connection.Open();
             SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = f.Name;
-            cmd.Parameters.Add("@CategoryId", SqlDbType.Int, 10).Value = f.CategoryId;
-            cmd.Parameters.Add("@AgeId", SqlDbType.Int, 10).Value = f.AgeId;
+            cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = Name;
+            cmd.Parameters.Add("@CategoryId", SqlDbType.Int, 10).Value = CategoryId;
+            cmd.Parameters.Add("@AgeId", SqlDbType.Int, 10).Value = AgeId;
             cmd.ExecuteNonQuery();
             connection.Close();
-            films.Add(f);
+
+
+            LoadData();
+
+            
+            //int FilmId=0;
+            //foreach(var i in films )
+            //{
+            //    if(i.Name == Name)
+            //    {
+            //        FilmId = i.Id;
+            //    }
+            //}
+
+
+            //films.Add(new Film(FilmId,Name,CategoryId,AgeId));
         }
 
         /// <summary>

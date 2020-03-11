@@ -25,10 +25,11 @@ namespace ProjectCinema
         /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
+
             formFilms fm = new formFilms();
             if( fm.ShowDialog()== DialogResult.OK)
-            {
-                dm.AddFilm(new Film(fm.Name, fm.CategoryId, fm.AgeCategoryId));
+            { 
+                dm.AddFilm(fm.Name, fm.CategoryId, fm.AgeCategoryId);
             }
         }
 

@@ -16,6 +16,7 @@ namespace ProjectCinema
 
         int c, a;
 
+        public int Id { get; set; }
         public string Name { get; set; }
         public int CategoryId { get; set; }
         public int AgeCategoryId { get; set; }
@@ -46,6 +47,9 @@ namespace ProjectCinema
             
             if (name != String.Empty)
             {
+                Id = Id;
+
+
                 Name = name;
                 CategoryId = c+1;
                 AgeCategoryId = a+1;
