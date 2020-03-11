@@ -33,10 +33,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@
             this.okBtn.Name = "okBtn";
             this.okBtn.Size = new System.Drawing.Size(67, 23);
             this.okBtn.TabIndex = 10;
-            this.okBtn.Text = "Ok";
+            this.okBtn.Text = "Удалить";
             this.okBtn.UseVisualStyleBackColor = true;
             this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
@@ -72,9 +72,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 218);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 13);
+            this.label1.Size = new System.Drawing.Size(174, 13);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Название фильма:";
+            this.label1.Text = "Название фильма для удаления:";
             // 
             // listView1
             // 
@@ -82,22 +82,14 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.listView1.FullRowSelect = true;
+            this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(3, 4);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(227, 211);
             this.listView1.TabIndex = 12;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(236, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(25, 280);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // columnHeader1
             // 
@@ -113,6 +105,16 @@
             // 
             this.columnHeader3.Text = "Возвраст";
             this.columnHeader3.Width = 73;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(236, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(25, 280);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Добавить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
