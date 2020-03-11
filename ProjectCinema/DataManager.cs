@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Data.SqlClient;
 using System.Data;
+using ProjectCinema.Models;
 
 namespace ProjectCinema
 {
@@ -18,6 +19,9 @@ namespace ProjectCinema
         public List<Session> sessions;
         public List<Place> places;
         public List<Ticket> tickets;
+        public List<User> users;
+
+
 
         public DataManager()
         {
@@ -28,6 +32,7 @@ namespace ProjectCinema
             sessions = new List<Session>();
             places = new List<Place>();
             tickets = new List<Ticket>();
+            users = new List<User>();
             LoadData();
         }
 
@@ -40,9 +45,12 @@ namespace ProjectCinema
             string querySession = "SELECT * FROM Session";
             string queryPlace = "SELECT * FROM Plases";
             string queryTicket = "SELECT * FROM Tickets";
+            string queryUser = "SELECT * FROM Users";
             connection.Open();
             SqlCommand cmd;
             SqlDataReader reader;
+
+
 
             //queryCategories
             cmd = new SqlCommand(queryCategories, connection);
@@ -71,7 +79,7 @@ namespace ProjectCinema
             connection.Open();
             cmd = new SqlCommand(queryFilm, connection);
             reader = cmd.ExecuteReader();
-            while(reader.Read())
+            while (reader.Read())
             {
                 Film f = new Film(
                     reader["Name"].ToString(),
@@ -133,52 +141,24 @@ namespace ProjectCinema
                     );
                 tickets.Add(t);
             }
-
             connection.Close();
-        }
-
-
-        /// <summary>
-        /// добавления фильма (Игорь)
-        /// </summary>
-        public void AddFilm(Film f)
-        {
-            string query = "insert into Films (Name, CategoryId, AgeId) values (@Name, @CategoryId,@AgeId) ";
+            //queryUser
             connection.Open();
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = f.Name;
-            cmd.Parameters.Add("@CategoryId", SqlDbType.Int, 10).Value = f.CategoryId;
-            cmd.Parameters.Add("@AgeId", SqlDbType.Int, 10).Value = f.AgeId;
-            cmd.ExecuteNonQuery();
-            connection.Close();
-            films.Add(f);
-        }
-
-        /// <summary>
-        /// Удаление фильма (Игорь)
-        /// </summary>
-        public void DelFilm(string name)
-        {
-            int t = 0;
-            int k = 0;
-            foreach (var f in films)
+            cmd = new SqlCommand(queryUser, connection);
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                if (f.Name == name)
-                {
-                    k = t;
-                }
-                t++;
+                User u = new User(
+                    reader["UserLogin"].ToString(),
+                    (string)reader["UserPass"],
+                    (string)reader["Question"],
+                    (string)reader["Answer"]
+                    );
+                users.Add(u);
             }
-
-            string query = "DELETE FROM Films WHERE Name = name";
-            connection.Open();
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.ExecuteNonQuery();
             connection.Close();
-            films.RemoveAt(k);
-            Console.WriteLine("Фильм успешно удален");
-        }
 
+        }
 
 
     }

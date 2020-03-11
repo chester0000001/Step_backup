@@ -12,32 +12,14 @@ namespace ProjectCinema
 {
     public partial class Form1 : Form
     {
-        DataManager dm = new DataManager();
         public Form1()
         {
             InitializeComponent();
         }
 
-
-        /// <summary>
-        /// добавления фильма (Игорь)
-        /// </summary>
-        private void button1_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            formFilms fm = new formFilms();
-            if( fm.ShowDialog()== DialogResult.OK)
-            {
-                dm.AddFilm(new Film(fm.Name, fm.CategoryId, fm.AgeCategoryId));
-            }
-        }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            formFilmDel fmd = new formFilmDel();
-            if (fmd.ShowDialog() == DialogResult.OK)
-            {
-                dm.DelFilm(fmd.Name);
-            }
         }
     }
 }
