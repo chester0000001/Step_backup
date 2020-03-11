@@ -42,11 +42,13 @@ namespace ProjectCinema
     
         private void okBtn_Click(object sender, EventArgs e)
         {
+
             string name = textBox1.Text;
             
             if (name != String.Empty)
             {
                 Name = name;
+
                 CategoryId = c+1;
                 AgeCategoryId = a+1;
             }

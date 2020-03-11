@@ -25,6 +25,7 @@ namespace ProjectCinema
         /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
+
             formFilms fm = new formFilms();
             if( fm.ShowDialog()== DialogResult.OK)
             {

@@ -58,6 +58,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Category c = new Category(
+                    (int)reader["Id"],
                     reader["Name"].ToString()
                     );
                 categories.Add(c);
@@ -70,6 +71,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 AgeRestriction ar = new AgeRestriction(
+                    (int)reader["Id"],
                     (int)reader["Age"]
                     );
                 ageRestrictions.Add(ar);
@@ -82,6 +84,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Film f = new Film(
+                    (int)reader["Id"],
                     reader["Name"].ToString(),
                     (int)reader["CategoryId"],
                     (int)reader["AgeId"]
@@ -96,6 +99,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Hall h = new Hall(
+                    (int)reader["Id"],
                     reader["Name"].ToString()
                     );
                 halls.Add(h);
@@ -108,6 +112,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Session s = new Session(
+                    (int)reader["Id"],
                     (int)reader["HallId"],
                     (DateTime)reader["DateTime"],
                     (int)reader["FilmId"]
@@ -122,6 +127,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Place p = new Place(
+                    (int)reader["Id"],
                     (int)reader["HallId"],
                     (int)reader["Row"]
                     );
@@ -135,6 +141,7 @@ namespace ProjectCinema
             while (reader.Read())
             {
                 Ticket t = new Ticket(
+                    (int)reader["Id"],
                     (int)reader["PlaceId"],
                     (int)reader["SessionId"],
                     (DateTime)reader["DateTime"]

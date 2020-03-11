@@ -65,3 +65,4 @@ C:\Users\student.LAN\source\repos\Step_backup\ProjectCinema\obj\Debug\ProjectCin
 C:\Users\student.LAN\source\repos\Step_backup\ProjectCinema\obj\Debug\ProjectCinema.csproj.CoreCompileInputs.cache
 C:\Users\student.LAN\source\repos\Step_backup\ProjectCinema\obj\Debug\ProjectCinema.exe
 C:\Users\student.LAN\source\repos\Step_backup\ProjectCinema\obj\Debug\ProjectCinema.pdb
+C:\Users\student.LAN\source\repos\Step_backup\ProjectCinema\obj\Debug\ProjectCinema.formTickets.resources
