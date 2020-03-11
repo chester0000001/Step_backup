@@ -27,8 +27,17 @@ namespace ProjectCinema
             foreach(var i in dm.films)
             {
                 var item = listView1.Items.Add(i.Name);
-                item.SubItems.Add(i.CategoryId.ToString());
-                item.SubItems.Add(i.AgeId.ToString());
+                foreach (var c in dm.categories)
+                {
+                    if(i.CategoryId == c.Id)
+                    { item.SubItems.Add(c.Name); }
+                }
+
+                foreach (var a in dm.ageRestrictions)
+                {
+                    if (i.AgeId == a.Id)
+                    { item.SubItems.Add(a.Age.ToString()); }
+                }
             }
         }
         private void okBtn_Click(object sender, EventArgs e)
@@ -62,7 +71,7 @@ namespace ProjectCinema
             formFilms fm = new formFilms();
             if (fm.ShowDialog() == DialogResult.OK)
             {
-                dm.AddFilm(new Film(fm.Name, fm.CategoryId, fm.AgeCategoryId));
+                dm.AddFilm(fm.Name, fm.CategoryId, fm.AgeCategoryId);
             }
             displaylist();
         }
