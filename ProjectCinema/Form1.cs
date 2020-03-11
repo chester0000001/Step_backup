@@ -16,6 +16,7 @@ namespace ProjectCinema
         public Form1()
         {
             InitializeComponent();
+            Display();
         }
 
 
@@ -38,6 +39,19 @@ namespace ProjectCinema
             {
                 dm.DelFilm(fmd.Name);
             }
+        }
+
+        public void Display()
+        {
+            foreach(var i in dm.films)
+            {
+                listBox1.Items.Add(i.Name);
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

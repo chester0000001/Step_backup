@@ -197,7 +197,6 @@ namespace ProjectCinema
             cmd.ExecuteNonQuery();
             connection.Close();
             films.RemoveAt(k);
-            Console.WriteLine("Фильм успешно удален");
         }
     }
 }
