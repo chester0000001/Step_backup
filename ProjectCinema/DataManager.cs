@@ -39,7 +39,7 @@ namespace ProjectCinema
         public void LoadData()
         {
             categories.Clear();
-        ageRestrictions.Clear();
+            ageRestrictions.Clear();
             films.Clear();
             halls.Clear();
             sessions.Clear();
@@ -174,7 +174,7 @@ namespace ProjectCinema
             }
             connection.Close();
          
-    }
+        }
         /// <summary>
         /// добавления фильма (Игорь)
         /// </summary>
@@ -188,7 +188,6 @@ namespace ProjectCinema
             cmd.Parameters.Add("@AgeId", SqlDbType.Int, 10).Value = AgeId;
             cmd.ExecuteNonQuery();
             connection.Close();
-
 
             LoadData();
 
@@ -228,6 +227,49 @@ namespace ProjectCinema
             cmd.ExecuteNonQuery();
             connection.Close();
             films.RemoveAt(k);
+        }
+
+        //Степан
+        public void AddTicket(int placeId, int sessionId)
+        {
+            string queryInsert = "INSERT INTO Tickets(PlaceId,SessionId,DateTime) " +
+                                 "VALUES (@placeId,@sessionId,GETDATE())";
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(queryInsert,connection);
+            cmd.Parameters.Add("@placeId", SqlDbType.Int).Value = placeId;
+            cmd.Parameters.Add("@sessionId", SqlDbType.Int).Value = sessionId;
+            cmd.ExecuteNonQuery();
+            connection.Close();
+            LoadData();
+        }
+
+        public void AddSession(DateTime dateTime,int filmId, int hallId)
+        {
+            string queryInsert = "INSERT INTO Session " +
+                                 "VALUES (@hallId,@dateTime,@filmId)";
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(queryInsert, connection);
+            cmd.Parameters.Add("@hallId", SqlDbType.Int).Value = hallId;
+            cmd.Parameters.Add("@dateTime", SqlDbType.DateTime).Value = dateTime;
+            cmd.Parameters.Add("@filmId", SqlDbType.Int).Value = filmId;
+            cmd.ExecuteNonQuery();
+            connection.Close();
+            LoadData();
+        }
+
+        public void DelSession(DateTime dateTime, int hallId)
+        {
+            int sessionId = sessions.FirstOrDefault(s => s.DateTime == dateTime && s.HallId == hallId).Id;
+            string queryDelete = "DELETE FROM Tickets WHERE SessionId = @sessionId; " +
+                                 "DELETE FROM Session WHERE DateTime = @dateTime and FilmId = @filmId";
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(queryDelete, connection);
+            cmd.Parameters.Add("@sessionId", SqlDbType.Int).Value = sessionId;
+            cmd.Parameters.Add("@dateTime", SqlDbType.DateTime).Value = dateTime;
+            cmd.Parameters.Add("@filmId", SqlDbType.Int).Value = hallId;
+            cmd.ExecuteNonQuery();
+            connection.Close();
+            LoadData();
         }
     }
 }

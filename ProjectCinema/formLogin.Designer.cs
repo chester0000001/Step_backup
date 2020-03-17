@@ -36,6 +36,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.skipLoginBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,11 +121,22 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // skipLoginBtn
+            // 
+            this.skipLoginBtn.Location = new System.Drawing.Point(408, 0);
+            this.skipLoginBtn.Name = "skipLoginBtn";
+            this.skipLoginBtn.Size = new System.Drawing.Size(87, 23);
+            this.skipLoginBtn.TabIndex = 8;
+            this.skipLoginBtn.Text = "*пропустить*";
+            this.skipLoginBtn.UseVisualStyleBackColor = true;
+            this.skipLoginBtn.Click += new System.EventHandler(this.skipLoginBtn_Click);
+            // 
             // formLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(507, 155);
+            this.Controls.Add(this.skipLoginBtn);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -151,5 +163,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button skipLoginBtn;
     }
 }

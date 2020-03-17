@@ -86,6 +86,12 @@
     <Compile Include="formLogin.Designer.cs">
       <DependentUpon>formLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="formSessionAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSessionAdd.Designer.cs">
+      <DependentUpon>formSessionAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="formSessions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formSessionAdd.resx">
+      <DependentUpon>formSessionAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formSessions.resx">
+      <DependentUpon>formSessions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formTickets.resx">
       <DependentUpon>formTickets.cs</DependentUpon>

@@ -66,8 +66,8 @@ namespace ProjectCinema
                 if (x == 1 && y == 1)
                 {
                     MessageBox.Show("Вход осуществлён !", "Успешно !", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    Form1 newForm = new Form1();
-                    newForm.Show();
+                    formTickets form = new formTickets();
+                    form.Show();
                     this.Hide();
                 }
                 else
@@ -82,6 +82,17 @@ namespace ProjectCinema
         {
             Forgot newForm = new Forgot();
             newForm.Show();
+        }
+
+        private void skipLoginBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            formTickets form = new formTickets();
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+
         }
     }
 }
